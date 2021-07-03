@@ -1,5 +1,7 @@
 const loginUser = require('./handlers/users/login-user');
 const registerUser = require('./handlers/users/register-user');
+const editUser = require('./handlers/users/edit-user');
+const specifiedUserById = require('./handlers/users/specified-user');
 
 const routes = [
   {
@@ -19,6 +21,16 @@ const routes = [
     method: 'GET',
     path: '/user',
     handler: loginUser,
+  },
+  {
+    method: 'GET',
+    path: '/user/{id}',
+    handler: specifiedUserById,
+  },
+  {
+    method: 'PUT',
+    path: '/user',
+    handler: editUser,
   },
 ];
 

@@ -12,11 +12,11 @@ const loginUser = async (request, h) => {
     response.code(404);
     return response;
   }
-
   if (result[0]['password'] === password) {
     const response = h.response({
       status: 'success',
       message: 'Login Succesfully',
+      _id: result[0]['_id'],
     });
     response.code(200);
     return response;
