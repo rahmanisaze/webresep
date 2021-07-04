@@ -29,7 +29,7 @@ const routes = [
   },
   {
     method: 'PUT',
-    path: '/user',
+    path: '/user/{id}',
     handler: editUser,
   },
 ];
