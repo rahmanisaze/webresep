@@ -43,7 +43,7 @@ const editUser = async (request, h) => {
       }
     }
   } catch (err) {
-    return h.response(error).code(500);
+    return h.response(err).code(500);
   }
 };
 

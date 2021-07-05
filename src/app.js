@@ -1,6 +1,7 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
+const inert = require('@hapi/inert');
 const routes = require('./routes');
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ const init = async () => {
   require('./db').db;
 
   server.route(routes);
+  await server.register(inert);
   await server.start();
   console.log('Server running on %s', server.info.uri);
 };
