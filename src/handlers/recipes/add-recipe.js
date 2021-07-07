@@ -23,7 +23,6 @@ const handleRecipeUpload = (payload) => {
       bahan = JSON.parse(bahan);
       caramasak = JSON.parse(caramasak);
       const id = new mongoose.Types.ObjectId().toHexString();
-      console.log(id);
       const recipe = new Recipe({
         _id: id,
         namaresep,
