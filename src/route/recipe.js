@@ -1,4 +1,5 @@
 const addRecipe = require('../handlers/recipes/add-recipe');
+const recipesByUser = require('../handlers/recipes/recipes-by-user');
 
 const recipeRoute = [
   {
@@ -10,6 +11,11 @@ const recipeRoute = [
       },
     },
     handler: addRecipe,
+  },
+  {
+    method: 'GET',
+    path: '/recipes/user/{id}',
+    handler: recipesByUser,
   },
 ];
 

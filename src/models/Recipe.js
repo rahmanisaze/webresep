@@ -2,14 +2,15 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const RecipeSchema = new Schema({
+  _id: require('mongodb').ObjectID,
   namaresep: String,
-  deskrispi: String,
+  deskripsi: String,
   bahan: Array,
   caramasak: Array,
   image: String,
   iduser: String,
   createdAt: Date,
   updatedAt: Date,
-});
+}, {_id: false});
 
 module.exports = mongoose.model('Recipe', RecipeSchema);

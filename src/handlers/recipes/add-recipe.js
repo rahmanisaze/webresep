@@ -1,4 +1,5 @@
 const Recipe = require('../../models/Recipe');
+const mongoose = require('mongoose');
 const fs = require('fs');
 
 const handleRecipeUpload = (payload) => {
@@ -14,26 +15,29 @@ const handleRecipeUpload = (payload) => {
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
     const imagePath = `./src/assets/${namaresep}.jpg`;
-
-    fs.writeFile(imagePath, image, (err) => {
+    const imageBuffer = Buffer.from(image, 'base64');
+    fs.writeFile(imagePath, imageBuffer, (err) => {
       if (err) {
         reject(err);
       }
       bahan = JSON.parse(bahan);
       caramasak = JSON.parse(caramasak);
+      const id = new mongoose.Types.ObjectId().toHexString();
+      console.log(id);
       const recipe = new Recipe({
+        _id: id,
         namaresep,
         deskripsi,
         imagePath,
         bahan,
         caramasak,
-        image: imagePath,
+        image: `http://localhost:3000/recipe/images/${id}`,
         iduser,
         createdAt,
         updatedAt,
       });
-      const result = recipe.save();
-      resolve(result);
+      recipe.save();
+      resolve({message: 'Recipe added succesfully!'});
     });
   });
 };
