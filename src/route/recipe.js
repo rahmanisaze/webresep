@@ -1,4 +1,5 @@
 const addRecipe = require('../handlers/recipes/add-recipe');
+const deleteRecipe = require('../handlers/recipes/delete-recipe');
 const getAllRecipes = require('../handlers/recipes/get-all-recipes');
 const getNewestRecipes = require('../handlers/recipes/get-newest-recipes');
 const getRecipeImage = require('../handlers/recipes/get-recipe-image');
@@ -34,6 +35,11 @@ const recipeRoute = [
     method: 'GET',
     path: '/recipe/images/{id}',
     handler: getRecipeImage,
+  },
+  {
+    method: 'DELETE',
+    path: '/recipe/{id}',
+    handler: deleteRecipe,
   },
 ];
 
